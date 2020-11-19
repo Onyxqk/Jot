@@ -4,26 +4,26 @@
 
 .btn-group {
   background-color: lightgray;
-width: max-content;
-margin: auto;
-    margin-top: auto;
-padding-left: 16px;
-padding-right: 16px;
-margin-top: 10px;
-    height: 61.5px;
-margin-bottom: 10px;
-border-radius: 10px;
+  width: max-content;
+  margin: auto;
+  margin-top: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 10px;
+  height: 61.5px;
+  margin-bottom: 10px;
+  border-radius: 10px;
   overflow-x: scroll;
   overflow-y: hidden;
 }
 
 .btn-group button {
-  background-color: #737373; 
+  background-color: #737373;
   border: none;
   color: white;
   font-family: serif;
   font-size: 16px;
-  padding: 10px 24px; 
+  padding: 10px 24px;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-right: 0px;
@@ -38,16 +38,16 @@ border-radius: 10px;
 }
 
 .btn-group button:not(:last-child) {
-  border-right: none; 
+  border-right: none;
 }
 
 .downloadButton {
-  background-color: #1A73E8; 
+  background-color: #1A73E8;
   border: none;
   color: white;
   font-family: serif;
   font-size: 16px;
-  padding: 10px 24px; 
+  padding: 10px 24px;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-right: 0px;
@@ -60,7 +60,9 @@ border-radius: 10px;
 }
 
 /*.card {*/
+
 /*  height: 83%;*/
+
 /*}*/
 
 .topnav {
@@ -70,16 +72,16 @@ border-radius: 10px;
   width: 100%;
 }
 
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 500px) {
   .btn-group {
     float: right;
     margin-right: 10px;
     width: 148.45px;
-  height: 61.5px;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
-}
+    height: 61.5px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
 }
 
 .btn-group button:hover {
@@ -92,6 +94,6 @@ border-radius: 10px;
 }
 
 .sans {
-    font-family: sans-serif;
-    font-size: revert;
+  font-family: sans-serif;
+  font-size: revert;
 }
