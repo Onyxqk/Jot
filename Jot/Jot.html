@@ -1,0 +1,39 @@
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+<title>Jot - Editor</title>
+<link rel="stylesheet" type="text/css" href="../style.css">
+<link rel="stylesheet" type="text/css" href="jot.css">
+<link rel="icon" href="thoughtjot.png" type="image/png" sizes="32x32"> 
+<script src="jot.js"></script>
+<body class="backdrop">
+<div class="topnav" id="topnav" role="navigation">
+  <a href="Jot.html" style="font-size: xx-large;"><img src="../thoughtjot.png" width="36" height="36" alt=""> <b>Jot </b></a>
+ <div id= "buttonGroup" class="btn-group">
+    <button onclick="bold()" aria-label="Bold"><b>B</b></button>
+    <button onclick="italicize()" aria-label="Italicize"><i>I</i></button>
+    <button>H1</button>
+    <button>H2</button>
+    </div>
+</div>
+<div><br>
+<div class = "row">
+<div class="column center" style="width:100%;">
+<div class="card content" style="text-align:left;">
+<div class="content" contenteditable="true" role="main">
+<h1>Title</h1>
+<h2>I.</h2>
+<p>Example paragraph.</p>
+
+<h2>II.</h2>
+
+<p><b>Bold (supports ctrl-b/cmd-b keyboard shortcut)<br></b></p><p><i>Italics (supports ctrl-i/cmd-i keyboard shortcut)<br></i></p>
+<p>The title above is structured as H1, the chapter headings are structured as H2.<br></p><p>Blockquotes should come.<br></p><p>Example of emphasis (H2, center, and italics):</p>
+
+<h2 class="center"><i>Emphasis <br></i></h2>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
