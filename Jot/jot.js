@@ -1,4 +1,5 @@
 var editableState = false;
+var navbarExpanded = true;
 var contentItems = document.getElementsByClassName("contentItem");
 
 function toggleEditable() {
@@ -21,9 +22,75 @@ function bold() {
   document.execCommand("bold");
 }
 
+function h1() {
+  var h1 = document.createElement("H1"); // Create the H1 element
+  h1.id = "H1";
+  var t = document.createTextNode(window.getSelection()); // Create a text element
+  h1.appendChild(t); // Append the text node to the H1 element 
+    var sel, range;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            range.deleteContents();
+            range.insertNode(h1);
+        }
+    } else if (document.selection && document.selection.createRange) {
+        range = document.selection.createRange();
+        range.text = h1;
+    }
+}
+
+function h2() {
+  var h2 = document.createElement("H2"); // Create the H1 element
+  h2.id = "H2";
+  var t = document.createTextNode(window.getSelection()); // Create a text element
+  h2.appendChild(t); // Append the text node to the H1 element 
+    var sel, range;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            range.deleteContents();
+            range.insertNode(h2);
+        }
+    } else if (document.selection && document.selection.createRange) {
+        range = document.selection.createRange();
+        range.text = h2;
+    }
+}
 
 function italicize() {
   document.execCommand("italic");
+}
+
+function toggleNav() {
+  if (navbarExpanded) {
+    document.getElementById("caret").classList.add("rotate");
+    document.getElementById("topnav").classList.add("topshift");
+    document.getElementById("card").classList.add("topshift");
+  }
+  else {
+    document.getElementById("caret").classList.remove("rotate");
+    document.getElementById("topnav").classList.remove("topshift");
+    document.getElementById("card").classList.remove("topshift");
+  }
+  navbarExpanded = !navbarExpanded;
+}
+
+function download() {
+  var content = document.getElementById("content").innerHTML;
+  var dl = document.createElement('a');
+  var filename = document.getElementsByTagName("H1").item(0).innerHTML + '.html';
+  dl.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(content));
+  dl.setAttribute('download', filename);
+  // Set hidden so the element doesn't disrupt your page
+  dl.setAttribute('visibility', 'hidden');
+  dl.setAttribute('display', 'none');
+  // Append to page
+  document.body.appendChild(dl);
+  // Now you can trigger the click
+  dl.click();
 }
 
 function keyHandler(e) {
