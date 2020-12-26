@@ -10,17 +10,18 @@
 
 <body class="backdrop">
   <div class="topnav" id="topnav" role="navigation">
-    <a href="#" style="font-size: xx-large;"><img src="../thoughtjot.png" width="36" height="36" alt=""> <b>Jot
+    <a href="Jots.html" style="font-size: xx-large;"><img src="../thoughtjot.png" width="36" height="36" alt=""> <b>Jot
       </b></a>
     <div id="buttonGroup" class="btn-group">
       <button class="downloadButton" onclick="download()" title="Download" aria-label="Download">↓</button>
-      <button class="downloadButton" onclick="download()" title="Publish" aria-label="Publish">↑</button>
+      <!-- <button class="downloadButton" onclick="download()" title="Publish" aria-label="Publish">↑</button> -->
       <span class="separator"></span>
       <button onclick="h1()">H1</button>
       <button onclick="h2()">H2</button>
       <button onclick="bold()" title="Bold" aria-label="Bold"><b>B</b></button>
       <button onclick="italicize()" title="Italicize" aria-label="Italicize"><i>I</i></button>
       <button onclick="blockquote()" title="Blockquote" aria-label="Blockquote">“ ”</button>
+      <button class="centerButton" onclick="center()" title="Center" aria-label="Center">] [</button>
     </div>
     <!-- <button class="caret" id="caret" onclick="toggleNav()">^</button> -->
   </div>
@@ -38,7 +39,7 @@
             <p><b>Bold (supports ctrl-b/cmd-b keyboard shortcut)<br></b></p>
             <p><i>Italics (supports ctrl-i/cmd-i keyboard shortcut)<br></i></p>
             <p>The title above is structured as H1, the chapter headings are structured as H2.<br></p>
-            <p>Blockquotes should come.<br></p>
+            <blockquote>Blockquotes are supported.</blockquote>
             <p>Example of emphasis (H2, center, and italics):</p>
 
             <h2 class="center"><i>Emphasis <br></i></h2>
@@ -47,6 +48,7 @@
       </div>
     </div>
   </div>
+  <div id="snackbar">Saved</div>
 </body>
 
 </html>

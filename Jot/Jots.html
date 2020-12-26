@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Jot - Your Jots</title>
+<link rel="stylesheet" type="text/css" href="../style.css">
+<link rel="stylesheet" type="text/css" href="jot.css">
+<link rel="icon" href="../thoughtjot.png" type="image/png" sizes="32x32">
+<script src="jot.js"></script>
+<script src="jots.js"></script>
+
+<body class="backdrop">
+  <div class="topnav" id="topnav" role="navigation">
+    <a href="Jot.html" style="font-size: xx-large;"><img src="../thoughtjot.png" width="36" height="36" alt=""> <b>Jot
+      </b></a>
+    <input type="search" class="search" aria-label="Search" id="search" placeholder="Search..." onchange="search()">
+  </div>
+  <div><br>
+    <div class="row" id="jots">
+      <div class="column center">
+        <h1>Jots</h1>
+        <button id="deleteAllButton" onclick="deleteAll()">Delete All</button>
+        <div id="jotZone">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

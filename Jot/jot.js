@@ -27,18 +27,18 @@ function h1() {
   h1.id = "H1";
   var t = document.createTextNode(window.getSelection()); // Create a text element
   h1.appendChild(t); // Append the text node to the H1 element 
-    var sel, range;
-    if (window.getSelection) {
-        sel = window.getSelection();
-        if (sel.rangeCount) {
-            range = sel.getRangeAt(0);
-            range.deleteContents();
-            range.insertNode(h1);
-        }
-    } else if (document.selection && document.selection.createRange) {
-        range = document.selection.createRange();
-        range.text = h1;
+  var sel, range;
+  if (window.getSelection) {
+    sel = window.getSelection();
+    if (sel.rangeCount) {
+      range = sel.getRangeAt(0);
+      range.deleteContents();
+      range.insertNode(h1);
     }
+  } else if (document.selection && document.selection.createRange) {
+    range = document.selection.createRange();
+    range.text = h1;
+  }
 }
 
 function h2() {
@@ -46,39 +46,66 @@ function h2() {
   h2.id = "H2";
   var t = document.createTextNode(window.getSelection());
   h2.appendChild(t);
-    var sel, range;
-    if (window.getSelection) {
-        sel = window.getSelection();
-        if (sel.rangeCount) {
-            range = sel.getRangeAt(0);
-            range.deleteContents();
-            range.insertNode(h2);
-        }
-    } else if (document.selection && document.selection.createRange) {
-        range = document.selection.createRange();
-        range.text = h2;
+  var sel, range;
+  if (window.getSelection) {
+    sel = window.getSelection();
+    if (sel.rangeCount) {
+      range = sel.getRangeAt(0);
+      range.deleteContents();
+      range.insertNode(h2);
     }
+  } else if (document.selection && document.selection.createRange) {
+    range = document.selection.createRange();
+    range.text = h2;
+  }
 }
 
 function blockquote() {
   var blockquote = document.createElement("blockquote");
   blockquote.id = "blockquote";
-  var t = document.createTextNode(window.getSelection()); 
-  blockquote.appendChild(t);  
-    var sel, range;
-    if (window.getSelection) {
-        sel = window.getSelection();
-        if (sel.rangeCount) {
-            range = sel.getRangeAt(0);
-            range.deleteContents();
-            range.insertNode(blockquote);
-        }
-    } else if (document.selection && document.selection.createRange) {
-        range = document.selection.createRange();
-        range.text = blockquote;
+  var t = document.createTextNode(window.getSelection());
+  blockquote.appendChild(t);
+  var sel, range;
+  if (window.getSelection) {
+    sel = window.getSelection();
+    if (sel.rangeCount) {
+      range = sel.getRangeAt(0);
+      range.deleteContents();
+      range.insertNode(blockquote);
     }
+  } else if (document.selection && document.selection.createRange) {
+    range = document.selection.createRange();
+    range.text = blockquote;
+  }
 }
 
+function center() {
+  const selection = window.getSelection();
+  const center = document.getElementById('center');
+  const centered = selection.containsNode(center);
+
+  if(centered) {
+    center.range.deleteContents();
+  }
+  else {
+    var centerElement = document.createElement("center");
+    centerElement.id = "center";
+    var t = document.createTextNode(window.getSelection());
+    centerElement.appendChild(t);
+    var sel, range;
+    if (window.getSelection) {
+      sel = window.getSelection();
+      if (sel.rangeCount) {
+        range = sel.getRangeAt(0);
+        range.deleteContents();
+        range.insertNode(centerElement);
+      }
+    } else if (document.selection && document.selection.createRange) {
+      range = document.selection.createRange();
+      range.text = centerElement;
+    }
+  }
+}
 
 function italicize() {
   document.execCommand("italic");
@@ -113,6 +140,15 @@ function download() {
   dl.click();
 }
 
+function save() {
+  var date = Date.now();
+  var content = document.getElementById("content").innerHTML;
+  localStorage.setItem(date, content);
+  var x = document.getElementById("snackbar");
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
 function keyHandler(e) {
   if (e.ctrlKey && e.key === "b" || e.metaKey && e.key === "b") {
     e.preventDefault();
@@ -121,6 +157,14 @@ function keyHandler(e) {
   if (e.ctrlKey && e.key === "i" || e.metaKey && e.key === "i") {
     e.preventDefault();
     italicize();
+  }
+  if (e.ctrlKey && e.key === "s" || e.metaKey && e.key === "s") {
+    e.preventDefault();
+    save();
+  }
+  if (e.ctrlKey && e.key === "d" || e.metaKey && e.key === "d") {
+    e.preventDefault();
+    download();
   }
 }
 
