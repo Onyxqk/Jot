@@ -1,22 +1,8 @@
-var editableState = false;
-var navbarExpanded = true;
-var contentItems = document.getElementsByClassName("contentItem");
+window.onload = function () {
+  getTheme();
+};
 
-function toggleEditable() {
-  editableState = !editableState;
-  var i;
-  for (i = 0; i < contentItems.length; i++) {
-    contentItems[i].contentEditable = editableState;
-  }
-  if (editableState) {
-    document.getElementById("editButton").textContent = "Done editing";
-    document.getElementById("buttonGroup").classList.remove("hideContent");
-  }
-  else {
-    document.getElementById("editButton").textContent = "Edit";
-    document.getElementById("buttonGroup").classList.add("hideContent");
-  }
-}
+var id=0;
 
 function bold() {
   document.execCommand("bold");
@@ -111,20 +97,6 @@ function italicize() {
   document.execCommand("italic");
 }
 
-function toggleNav() {
-  if (navbarExpanded) {
-    document.getElementById("caret").classList.add("rotate");
-    document.getElementById("topnav").classList.add("topshift");
-    document.getElementById("card").classList.add("topshift");
-  }
-  else {
-    document.getElementById("caret").classList.remove("rotate");
-    document.getElementById("topnav").classList.remove("topshift");
-    document.getElementById("card").classList.remove("topshift");
-  }
-  navbarExpanded = !navbarExpanded;
-}
-
 function download() {
   var content = document.getElementById("content").innerHTML;
   var dl = document.createElement('a');
@@ -169,3 +141,70 @@ function keyHandler(e) {
 }
 
 document.addEventListener('keydown', keyHandler);
+
+function getTheme() {
+  switch (localStorage.getItem("theme")) {
+      case "crimsonTide":
+          document.getElementById('topnav').classList.add('crimsonTide');
+          document.getElementById('buttonGroup').classList.add('crimsonTide2');
+          document.querySelector('.separator').classList.add('crimsonTide');
+          document.querySelectorAll('button').forEach(button => {
+            button.classList.add('crimsonTide');
+          });
+          break;
+      case "batcave":
+        document.getElementById('topnav').classList.add('batcave');
+        document.getElementById('body').classList.add('batcave-backdrop');
+        break;
+      case "regal":
+          document.getElementById('topnav').classList.add('regal');
+          document.getElementById('body').classList.add('regal-backdrop');
+          document.querySelector('.separator').classList.add('regal');
+          document.querySelectorAll('.btn-group button').forEach(button => {
+            button.classList.add('regal');
+          });
+          break;
+      case "pumpkin":
+            document.getElementById('topnav').classList.add('regal');
+            document.getElementById('body').classList.add('regal-backdrop');
+            break;
+      case "lux":
+        document.getElementById('topnav').classList.add('lux');
+        // document.getElementById('buttonGroup').classList.add('lux2');
+        document.getElementById('search').classList.add('lux2');
+        document.getElementById('body').classList.add('regal-backdrop');
+        break;
+      default:
+          break;
+  }
+}
+
+function setTheme() {
+  var selectedTheme = document.getElementById('themes').options[themes.selectedIndex].value;
+  switch (selectedTheme) {
+      case "crimsonTide":
+          localStorage.setItem("theme", "crimsonTide");
+          location.reload();
+          break;
+      case "batcave":
+        localStorage.setItem("theme", "batcave");
+        location.reload();
+          break;
+      case "regal":
+        localStorage.setItem("theme", "regal");
+        location.reload();
+        break;
+      case "pumpkin":
+        localStorage.setItem("theme", "pumpkin");
+        location.reload();
+        break;
+      case "lux":
+        localStorage.setItem("theme", "lux");
+        location.reload();
+        break;
+      default:
+        localStorage.removeItem(localStorage.key("theme"));
+        location.reload();
+        break;
+  }
+}

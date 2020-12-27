@@ -5,21 +5,31 @@
 <title>Jot - Your Jots</title>
 <link rel="stylesheet" type="text/css" href="../style.css">
 <link rel="stylesheet" type="text/css" href="jot.css">
+<link rel="stylesheet" type="text/css" href="themes.css">
 <link rel="icon" href="../thoughtjot.png" type="image/png" sizes="32x32">
 <script src="jot.js"></script>
 <script src="jots.js"></script>
 
-<body class="backdrop">
+<body id="body" class="jots-backdrop">
   <div class="topnav" id="topnav" role="navigation">
     <a href="Jot.html" style="font-size: xx-large;"><img src="../thoughtjot.png" width="36" height="36" alt=""> <b>Jot
       </b></a>
-    <input type="search" class="search" aria-label="Search" id="search" placeholder="Search..." onchange="search()">
+    <input type="text" class="search" aria-label="Search" id="search" placeholder="Search..." onkeydown="search()">
   </div>
   <div><br>
     <div class="row" id="jots">
       <div class="column center">
-        <h1>Jots</h1>
+        <h1 class="sans">Jots</h1>
         <button id="deleteAllButton" onclick="deleteAll()">Delete All</button>
+        <label for="themes" class="sans">Theme:</label>
+        <select id="themes" onchange="setTheme()">
+          <option value="default">Jot Standard</option>
+          <option value="crimsonTide">Crimson Tide</option>
+          <option value="regal">Regal</option>
+          <option value="batcave">Batcave</option>
+          <option value="pumpkin">Pumpkin</option>
+          <option value="lux">Lux</option>
+        </select>
         <div id="jotZone">
 
         </div>

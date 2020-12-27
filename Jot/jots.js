@@ -1,5 +1,6 @@
 window.onload = function () {
     updateJots();
+    getTheme();
 };
   
 function updateJots() {
@@ -8,18 +9,20 @@ function updateJots() {
     for (var i = 0; i < localStorage.length; i++) {
         var timestamp = parseInt(localStorage.key(i));
         var date = new Date(timestamp);
-        jotZone.innerHTML += '<h2>' + date.toDateString() + '</h2>' + '<div id="card" class="card content" style="text-align:left;">' +
-            localStorage.getItem(localStorage.key(i)); + '</div>';
+        var jot = localStorage.getItem(localStorage.key(i));
+        jotZone.innerHTML += '<h2 class="sans">' + date.toDateString() + '</h2>' + '<div id="jot" class="jot card content" style="text-align:left;">' +
+            jot + '</div>';
     }
 
     if(localStorage.length===0) {
-        jotZone.innerHTML += '<h2>' + 'There are no jots here' + '</h2>';
+        jotZone.innerHTML += '<h2 class="sans">' + 'There are no jots here' + '</h2>';
+        jotZone.innerHTML += '<button class="createButton" onclick="loadJot()">Create a jot</button>'
         document.getElementById('deleteAllButton').style.display="none";
     }
 }
 
 function search() {
-    var input, filter, jotZone, i;
+    var input, filter, jot, i;
     input = document.getElementById("search");
     filter = input.value.toUpperCase();
     jots = document.getElementsByClassName("card");
@@ -42,4 +45,8 @@ function deleteAll() {
 
 function deleteJot(jot) {
     localStorage.removeItem(localStorage.key(jot));
+}
+
+function loadJot() {
+    location.assign("Jot.html");
 }

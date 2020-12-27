@@ -83,6 +83,9 @@
   .topnav {
     text-align: center;
   }
+  .search {
+    margin-right: 100px;
+  }
 }
 
 @media only screen and (max-width: 520px) {
@@ -117,12 +120,11 @@
 }
 
 .jots-backdrop {
-  background-color:#f1f1f1;
+  background-color: #D8D8D8;
 }
 
 .sans {
-  font-family: sans-serif;
-  font-size: revert;
+  font-family: sans-serif !important;
 }
 
 .separator {
@@ -211,4 +213,29 @@
 @keyframes fadeout {
   from {bottom: 30px; opacity: 1;}
   to {bottom: 0; opacity: 0;}
+}
+
+.jot {
+  height: 20% !important;
+}
+
+.createButton {
+  display: block;
+  border: none;
+  border-radius: 10px;
+  background-color: #7a0099;
+  color: white;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-family: sans-serif;
+  cursor: pointer;
+  text-align: center;
+}
+
+.createButton:hover {
+  color: white !important;
+  opacity: 0.8;
 }
