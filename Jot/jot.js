@@ -164,10 +164,6 @@ function getTheme() {
             button.classList.add('regal');
           });
           break;
-      case "pumpkin":
-            document.getElementById('topnav').classList.add('regal');
-            document.getElementById('body').classList.add('regal-backdrop');
-            break;
       case "lux":
         document.getElementById('topnav').classList.add('lux');
         // document.getElementById('buttonGroup').classList.add('lux2');
@@ -192,10 +188,6 @@ function setTheme() {
           break;
       case "regal":
         localStorage.setItem("theme", "regal");
-        location.reload();
-        break;
-      case "pumpkin":
-        localStorage.setItem("theme", "pumpkin");
         location.reload();
         break;
       case "lux":
