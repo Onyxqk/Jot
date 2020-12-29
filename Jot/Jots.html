@@ -20,15 +20,19 @@
     <div class="row" id="jots">
       <div class="column center">
         <h1 class="sans">Jots</h1>
-        <button id="deleteAllButton" onclick="deleteAll()">Delete All</button>
-        <label for="themes" class="sans">Theme:</label>
+        <!-- <label for="themes" class="sans">Theme:</label>
         <select id="themes" onchange="setTheme()">
           <option value="default">Jot Standard</option>
-          <option value="crimsonTide">Crimson Tide</option>
           <option value="regal">Regal</option>
           <option value="batcave">Batcave</option>
           <option value="lux">Lux</option>
-        </select>
+          <option value="crimsonTide">Crimson Tide</option>
+        </select> -->
+        <!-- <button id="deleteAllButton" onclick="deleteAll()">Delete All</button> -->
+        <div id="noJotsZone">
+          <h2 class="sans">There are no jots here</h2>
+          <button class="createButton" onclick="loadJot()">Create a jot</button>
+        </div>
         <div id="jotZone">
 
         </div>

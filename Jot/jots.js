@@ -1,23 +1,30 @@
 window.onload = function () {
     updateJots();
     getTheme();
+    if (navigator.storage && navigator.storage.persist)
+        navigator.storage.persist().then(function (persistent) {
+            if (persistent)
+                console.log("Storage will not be cleared except by explicit user action");
+            else
+                console.log("Storage may be cleared by the UA under storage pressure.");
+        });
 };
-  
+
 function updateJots() {
     var jotZone = document.getElementById('jotZone');
-
     for (var i = 0; i < localStorage.length; i++) {
         var timestamp = parseInt(localStorage.key(i));
         var date = new Date(timestamp);
         var jot = localStorage.getItem(localStorage.key(i));
-        jotZone.innerHTML += '<h2 class="sans">' + date.toDateString() + '</h2>' + '<div id="jot" class="jot card content" style="text-align:left;">' +
+        jotZone.innerHTML += '<h2 class="sans">' + date.toDateString() + '</h2>' + '<button class="deleteButton" onclick="deleteJot(jot)">Delete Jot</button>' + '<div id="jot" class="jot card content" onclick="loadJot()" style="text-align:left;">' +
             jot + '</div>';
     }
 
-    if(localStorage.length===0) {
-        jotZone.innerHTML += '<h2 class="sans">' + 'There are no jots here' + '</h2>';
-        jotZone.innerHTML += '<button class="createButton" onclick="loadJot()">Create a jot</button>'
-        document.getElementById('deleteAllButton').style.display="none";
+    if (localStorage.length === 0) {
+        document.getElementById('deleteAllButton').style.display = "none";
+    }
+    if (localStorage.length > 0) {
+        document.getElementById('noJotsZone').style.display = "none";
     }
 }
 
@@ -40,11 +47,12 @@ function search() {
 
 function deleteAll() {
     localStorage.clear();
-    location.reload(); 
+    location.reload();
 }
 
 function deleteJot(jot) {
     localStorage.removeItem(localStorage.key(jot));
+    location.reload();
 }
 
 function loadJot() {
