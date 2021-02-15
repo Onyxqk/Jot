@@ -14,14 +14,14 @@
     <a href="Jots.html" style="font-size: xx-large;"><img src="../thoughtjot.png" width="36" height="36" alt=""> <b>Jot
       </b></a>
     <div id="buttonGroup" class="btn-group">
-      <button class="downloadButton" onclick="download()" title="Download" aria-label="Download">↓</button>
+      <button class="downloadButton" onclick="save()" title="Save" aria-label="Save">↓</button>
       <span class="separator"></span>
       <button onclick="h1()" title="H1">H1</button>
       <button onclick="h2()" title="H2">H2</button>
       <button onclick="bold()" title="Bold" aria-label="Bold"><b>B</b></button>
       <button onclick="italicize()" title="Italicize" aria-label="Italicize"><i>I</i></button>
       <button onclick="blockquote()" title="Blockquote" aria-label="Blockquote">“ ”</button>
-      <button class="centerButton" onclick="center()" title="Center" aria-label="Center">] [</button>
+      <input type="range" min="1" max="3" value="1" class="slider" id="alignRange" oninput="textAlign()">
     </div>
     <!-- <button class="caret" id="caret" onclick="toggleNav()">^</button> -->
   </div>
@@ -38,6 +38,7 @@
 
             <p><b>Bold (supports ctrl-b/cmd-b keyboard shortcut)<br></b></p>
             <p><i>Italics (supports ctrl-i/cmd-i keyboard shortcut)<br></i></p>
+            <p>Jots can be saved using ctrl-s/cmd-s keyboard shortcut or using the ↓ button. Saving a jot stores it in your browser's local storage. Depending on your browser settings, the saved data may potentially be cleared when you close your browser.</p>
             <p>The title above is structured as H1, the chapter headings are structured as H2.<br></p>
             <blockquote>Blockquotes are supported.</blockquote>
             <p>Example of emphasis (H2, center, and italics):</p>

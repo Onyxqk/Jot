@@ -66,41 +66,32 @@ function blockquote() {
 }
 
 function center() {
-  const selection = window.getSelection();
-  const center = document.getElementById('center');
-  const centered = selection.containsNode(center);
-
-  if(centered) {
-    center.range.deleteContents();
-  }
-  else {
-    var centerElement = document.createElement("center");
-    centerElement.id = "center";
-    var t = document.createTextNode(window.getSelection());
-    centerElement.appendChild(t);
-    var sel, range;
-    if (window.getSelection) {
-      sel = window.getSelection();
-      if (sel.rangeCount) {
-        range = sel.getRangeAt(0);
-        range.deleteContents();
-        range.insertNode(centerElement);
-      }
-    } else if (document.selection && document.selection.createRange) {
-      range = document.selection.createRange();
-      range.text = centerElement;
-    }
-  }
+  document.execCommand("justifyCenter");
 }
 
 function italicize() {
   document.execCommand("italic");
 }
 
-function download() {
-  var content = document.getElementById("content").innerHTML;
+function textAlign() {
+  var rangeValue = document.getElementById("alignRange").value;
+  switch(rangeValue) {
+    case "1":
+      document.execCommand("justifyLeft");
+      break;
+    case "2":
+      document.execCommand("justifyCenter");
+      break;
+    case "3":
+      document.execCommand("justifyRight");
+      break;  
+  }
+}
+
+function download(jot) {
+  var content = jot.innerHTML;
   var dl = document.createElement('a');
-  var filename = document.getElementsByTagName("H1").item(0).innerHTML + '.html';
+  var filename = jot.getElementsByTagName("H1").item(0).innerHTML + '.html';
   dl.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(content));
   dl.setAttribute('download', filename);
   // Set hidden so the element doesn't disrupt your page
