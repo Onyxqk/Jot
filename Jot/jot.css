@@ -281,6 +281,7 @@
   appearance: none;
   width: 25px;
   height: 25px;
+  border-radius: 5px;
   background: rgb(105, 105, 135);
   cursor: pointer;
 }

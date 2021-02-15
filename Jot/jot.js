@@ -9,64 +9,15 @@ function bold() {
 }
 
 function h1() {
-  var h1 = document.createElement("H1"); // Create the H1 element
-  h1.id = "H1";
-  var t = document.createTextNode(window.getSelection()); // Create a text element
-  h1.appendChild(t); // Append the text node to the H1 element 
-  var sel, range;
-  if (window.getSelection) {
-    sel = window.getSelection();
-    if (sel.rangeCount) {
-      range = sel.getRangeAt(0);
-      range.deleteContents();
-      range.insertNode(h1);
-    }
-  } else if (document.selection && document.selection.createRange) {
-    range = document.selection.createRange();
-    range.text = h1;
-  }
+  document.execCommand("formatBlock", false, "<h1>"); 
 }
 
 function h2() {
-  var h2 = document.createElement("H2");
-  h2.id = "H2";
-  var t = document.createTextNode(window.getSelection());
-  h2.appendChild(t);
-  var sel, range;
-  if (window.getSelection) {
-    sel = window.getSelection();
-    if (sel.rangeCount) {
-      range = sel.getRangeAt(0);
-      range.deleteContents();
-      range.insertNode(h2);
-    }
-  } else if (document.selection && document.selection.createRange) {
-    range = document.selection.createRange();
-    range.text = h2;
-  }
+  document.execCommand("formatBlock", false, "<h2>"); 
 }
 
 function blockquote() {
-  var blockquote = document.createElement("blockquote");
-  blockquote.id = "blockquote";
-  var t = document.createTextNode(window.getSelection());
-  blockquote.appendChild(t);
-  var sel, range;
-  if (window.getSelection) {
-    sel = window.getSelection();
-    if (sel.rangeCount) {
-      range = sel.getRangeAt(0);
-      range.deleteContents();
-      range.insertNode(blockquote);
-    }
-  } else if (document.selection && document.selection.createRange) {
-    range = document.selection.createRange();
-    range.text = blockquote;
-  }
-}
-
-function center() {
-  document.execCommand("justifyCenter");
+  document.execCommand("formatBlock", false, "<blockquote>"); 
 }
 
 function italicize() {
