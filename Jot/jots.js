@@ -11,6 +11,7 @@ window.onload = function () {
 };
 
 function updateJots() {
+    document.getElementById('noResultsFound').style.display = "none";
     var jotZone = document.getElementById('jotZone');
     for (var i = 0; i < localStorage.length; i++) {
         var timestamp = parseInt(localStorage.key(i));
@@ -26,7 +27,6 @@ function updateJots() {
     if (localStorage.length > 0) {
         document.getElementById('noJotsZone').style.display = "none";
     }
-    document.getElementById('noResultsFound').style.display = "none";
 }
 
 function search() {
