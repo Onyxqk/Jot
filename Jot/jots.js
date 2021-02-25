@@ -34,6 +34,7 @@ function search() {
     filter = input.value.toUpperCase();
     jots = document.getElementsByClassName("card");
     dates= document.getElementsByClassName("dateSans");
+    editButtons = document.getElementsByClassName("editButton")
     deleteButtons = document.getElementsByClassName("deleteButton");
     downloadButtons = document.getElementsByClassName("downloadButton");
     // Loop through all Jots, and hide those who don't match the search query
@@ -42,11 +43,13 @@ function search() {
         date = dates[i];
         deleteButton = deleteButtons[i];
         downloadButton = downloadButtons[i];
+        editButton = editButtons[i];
         if (jot.innerHTML.toString().toUpperCase().includes(filter)) {
             jot.style.display = "";
             date.style.display = "";
             deleteButton.style.display = "";
             downloadButton.style.display = "";
+            editButton.style.display = "";
             document.getElementById('noResultsFound').style.display = "none";
 
         } else {
@@ -54,6 +57,7 @@ function search() {
             date.style.display = "none";
             deleteButton.style.display = "none";
             downloadButton.style.display = "none";
+            editButton.style.display = "none";
             document.getElementById('noResultsFound').style.display = "";
         }
     }
