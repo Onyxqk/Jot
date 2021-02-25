@@ -65,6 +65,27 @@
   opacity: 0.8;
 }
 
+.editButton {
+  border: none;
+  border-radius: 10px;
+  background-color: #7a0099;
+  color: white;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  padding: 7px 28px;
+  font-size: 16px;
+  font-family: sans-serif;
+  cursor: pointer;
+  text-align: center;
+}
+
+.editButton:hover {
+  color: white !important;
+  opacity: 0.8;
+}
+
 .centerButton {
   background-color: #696987 !important;
 }

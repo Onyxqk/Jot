@@ -1,5 +1,10 @@
 window.onload = function () {
   getTheme();
+  url = window.location.href;
+  if(url.indexOf("?") > -1) {
+    selectedJot = Date.parse((url.split('?')[1]));
+    document.getElementById("content").innerHTML = localStorage.getItem(localStorage.key(selectedJot));
+  }
 };
 
 var id=0;
@@ -84,6 +89,14 @@ function keyHandler(e) {
 }
 
 document.addEventListener('keydown', keyHandler);
+
+// function paragraphify() {
+//   if(document.activeElement !== "<blockquote>") {
+//     document.execCommand("formatBlock", false, "<p>");
+//   }
+// }
+
+// content.addEventListener('keydown', paragraphify);
 
 function getTheme() {
   switch (localStorage.getItem("theme")) {

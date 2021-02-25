@@ -16,7 +16,7 @@ function updateJots() {
         var timestamp = parseInt(localStorage.key(i));
         var date = new Date(timestamp);
         var jot = localStorage.getItem(localStorage.key(i));
-        jotZone.innerHTML += '<h2 class="dateSans">' + date.toDateString() + '</h2>' + '<button class="deleteButton" onclick="deleteJot(jot)">Delete</button> <button class="downloadButton" onclick="download(jot)">Download</button>' + '<div id="jot" class="jot card content" style="text-align:left;">' +
+        jotZone.innerHTML += '<h2 class="dateSans">' + date.toDateString() + '</h2>' + '<button class="editButton" onclick="editJot(jot)">Edit</button> <button class="downloadButton" onclick="download(jot)">Download</button> <button class="deleteButton" onclick="deleteJot(jot)">Delete</button>' + '<div id="jot" class="jot card content" style="text-align:left;">' +
             jot + '</div>';
     }
 
@@ -72,3 +72,7 @@ function deleteJot(jot) {
 function loadJot() {
     location.assign("Jot.html");
 }
+
+function editJot(jot) {
+    location.assign("Jot.html"+"?"+localStorage.key(jot));
+  }
