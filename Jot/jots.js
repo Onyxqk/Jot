@@ -11,7 +11,6 @@ window.onload = function () {
 };
 
 function updateJots() {
-    document.getElementById('noResultsFound').style.display = "none";
     var jotZone = document.getElementById('jotZone');
     for (var i = 0; i < localStorage.length; i++) {
         var timestamp = parseInt(localStorage.key(i));
