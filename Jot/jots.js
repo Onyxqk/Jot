@@ -16,7 +16,7 @@ function updateJots() {
         var timestamp = parseInt(localStorage.key(i));
         var date = new Date(timestamp);
         var jot = localStorage.getItem(localStorage.key(i));
-        jotZone.innerHTML += '<h2 class="sans">' + date.toDateString() + '</h2>' + '<button class="deleteButton" onclick="deleteJot(jot)">Delete</button> <button class="deleteButton downloadButton" onclick="download(jot)">Download</button>' + '<div id="jot" class="jot card content" style="text-align:left;">' +
+        jotZone.innerHTML += '<h2 class="dateSans">' + date.toDateString() + '</h2>' + '<button class="deleteButton" onclick="deleteJot(jot)">Delete</button> <button class="downloadButton" onclick="download(jot)">Download</button>' + '<div id="jot" class="jot card content" style="text-align:left;">' +
             jot + '</div>';
     }
 
@@ -26,6 +26,7 @@ function updateJots() {
     if (localStorage.length > 0) {
         document.getElementById('noJotsZone').style.display = "none";
     }
+    document.getElementById('noResultsFound').style.display = "none";
 }
 
 function search() {
@@ -33,15 +34,29 @@ function search() {
     input = document.getElementById("search");
     filter = input.value.toUpperCase();
     jots = document.getElementsByClassName("card");
+    dates= document.getElementsByClassName("dateSans");
+    deleteButtons = document.getElementsByClassName("deleteButton");
+    downloadButtons = document.getElementsByClassName("downloadButton");
     // Loop through all Jots, and hide those who don't match the search query
     for (i = 0; i < jots.length; i++) {
         jot = jots[i];
+        date = dates[i];
+        deleteButton = deleteButtons[i];
+        downloadButton = downloadButtons[i];
         if (jot.innerHTML.toString().toUpperCase().includes(filter)) {
             jot.style.display = "";
+            date.style.display = "";
+            deleteButton.style.display = "";
+            downloadButton.style.display = "";
+            document.getElementById('noResultsFound').style.display = "none";
+
         } else {
             jot.style.display = "none";
+            date.style.display = "none";
+            deleteButton.style.display = "none";
+            downloadButton.style.display = "none";
+            document.getElementById('noResultsFound').style.display = "";
         }
-
     }
 }
 

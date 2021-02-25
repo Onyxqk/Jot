@@ -45,7 +45,19 @@
 }
 
 .downloadButton {
+  border: none;
+  border-radius: 10px;
   background-color: #1A73E8 !important;
+  color: white;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  padding: 7px 28px;
+  font-size: 16px;
+  font-family: sans-serif;
+  cursor: pointer;
+  text-align: center;
 }
 
 .downloadButton:hover {
@@ -291,4 +303,8 @@
   height: 25px;
   background: rgb(105, 105, 135);
   cursor: pointer;
+}
+
+.dateSans {
+  font-family: sans-serif !important;
 }
