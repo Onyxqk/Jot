@@ -21,6 +21,10 @@ function h2() {
   document.execCommand("formatBlock", false, "<h2>"); 
 }
 
+function paragraphify() {
+  document.execCommand("formatBlock", false, "<p>");
+}
+
 function blockquote() {
   document.execCommand("formatBlock", false, "<blockquote>"); 
 }
@@ -89,14 +93,6 @@ function keyHandler(e) {
 }
 
 document.addEventListener('keydown', keyHandler);
-
-// function paragraphify() {
-//   if(document.activeElement !== "<blockquote>") {
-//     document.execCommand("formatBlock", false, "<p>");
-//   }
-// }
-
-// content.addEventListener('keydown', paragraphify);
 
 function getTheme() {
   switch (localStorage.getItem("theme")) {
