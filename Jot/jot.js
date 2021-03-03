@@ -29,6 +29,14 @@ function blockquote() {
   document.execCommand("formatBlock", false, "<blockquote>"); 
 }
 
+function bullet() {
+  document.execCommand("insertUnorderedList");
+}
+
+function numlist() {
+  document.execCommand("insertOrderedList");
+}
+
 function italicize() {
   document.execCommand("italic");
 }
