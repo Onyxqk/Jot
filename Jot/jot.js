@@ -1,5 +1,4 @@
 window.onload = function () {
-  getTheme();
   url = window.location.href;
   if(url.indexOf("?") > -1) {
     selectedJot = Date.parse((url.split('?')[1]));
@@ -118,62 +117,3 @@ function keyHandler(e) {
 }
 
 document.addEventListener('keydown', keyHandler);
-
-function getTheme() {
-  switch (localStorage.getItem("theme")) {
-      case "crimsonTide":
-          document.getElementById('topnav').classList.add('crimsonTide');
-          document.getElementById('buttonGroup').classList.add('crimsonTide2');
-          document.querySelector('.separator').classList.add('crimsonTide');
-          document.querySelectorAll('button').forEach(button => {
-            button.classList.add('crimsonTide');
-          });
-          break;
-      case "batcave":
-        document.getElementById('topnav').classList.add('batcave');
-        document.getElementById('body').classList.add('batcave-backdrop');
-        break;
-      case "regal":
-          document.getElementById('topnav').classList.add('regal');
-          document.getElementById('body').classList.add('regal-backdrop');
-          document.querySelector('.separator').classList.add('regal');
-          document.querySelectorAll('.btn-group button').forEach(button => {
-            button.classList.add('regal');
-          });
-          break;
-      case "lux":
-        document.getElementById('topnav').classList.add('lux');
-        // document.getElementById('buttonGroup').classList.add('lux2');
-        document.getElementById('search').classList.add('lux2');
-        document.getElementById('body').classList.add('regal-backdrop');
-        break;
-      default:
-          break;
-  }
-}
-
-function setTheme() {
-  var selectedTheme = document.getElementById('themes').options[themes.selectedIndex].value;
-  switch (selectedTheme) {
-      case "crimsonTide":
-          localStorage.setItem("theme", "crimsonTide");
-          location.reload();
-          break;
-      case "batcave":
-        localStorage.setItem("theme", "batcave");
-        location.reload();
-          break;
-      case "regal":
-        localStorage.setItem("theme", "regal");
-        location.reload();
-        break;
-      case "lux":
-        localStorage.setItem("theme", "lux");
-        location.reload();
-        break;
-      default:
-        localStorage.removeItem(localStorage.key("theme"));
-        location.reload();
-        break;
-  }
-}

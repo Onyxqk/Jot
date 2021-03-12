@@ -1,6 +1,5 @@
 window.onload = function () {
     updateJots();
-    getTheme();
     if (navigator.storage && navigator.storage.persist)
         navigator.storage.persist().then(function (persistent) {
             if (persistent)
