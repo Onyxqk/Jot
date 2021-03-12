@@ -6,8 +6,6 @@ window.onload = function () {
   }
 };
 
-var id=0;
-
 function bold() {
   document.execCommand("bold");
 }
@@ -74,9 +72,9 @@ function save() {
   var date = Date.now();
   var content = document.getElementById("content").innerHTML;
   localStorage.setItem(date, content);
-  var x = document.getElementById("savedSnackbar");
-  x.className = "show";
-  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  var savedSnackbar = document.getElementById("savedSnackbar");
+  savedSnackbar.className = "show";
+  setTimeout(function(){ savedSnackbar.className = savedSnackbar.className.replace("show", ""); }, 3000);
   updateJots();
 }
 
