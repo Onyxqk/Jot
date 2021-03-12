@@ -75,10 +75,22 @@ function save() {
   var date = Date.now();
   var content = document.getElementById("content").innerHTML;
   localStorage.setItem(date, content);
-  var x = document.getElementById("snackbar");
+  var x = document.getElementById("savedSnackbar");
   x.className = "show";
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
   updateJots();
+}
+
+function wordCount() {
+  var content = document.getElementById("content").innerHTML;
+  content = content.replace(/(^\s*)|(\s*$)/gi,"");
+  content = content.replace(/[ ]{2,}/gi," ");
+  content = content.replace(/\n /,"\n");
+  var wordCount = "Word Count: " + content.split(' ').length;
+  var wordCountSnackbar = document.getElementById("wordCountSnackbar");
+  wordCountSnackbar.innerText = wordCount;
+  wordCountSnackbar.className = "show";
+  setTimeout(function(){ wordCountSnackbar.className = wordCountSnackbar.className.replace("show", ""); }, 3000);
 }
 
 function keyHandler(e) {
@@ -97,6 +109,11 @@ function keyHandler(e) {
   if (e.ctrlKey && e.key === "d" || e.metaKey && e.key === "d") {
     e.preventDefault();
     download();
+  }
+
+  if (e.ctrlKey && e.key === "/" || e.metaKey && e.key === "/") {
+    e.preventDefault();
+    wordCount();
   }
 }
 
