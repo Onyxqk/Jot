@@ -15,12 +15,13 @@ function updateJots() {
         var timestamp = parseInt(localStorage.key(i));
         var date = new Date(timestamp);
         var jot = localStorage.getItem(localStorage.key(i));
-        jotZone.innerHTML += '<h2 class="dateSans">' + date.toDateString() + '</h2>' + '<button class="editButton" onclick="editJot(jot)">Edit</button> <button class="downloadButton" onclick="download(jot)">Download</button> <button class="deleteButton" onclick="deleteJot(jot)">Delete</button>' + '<div id="jot" class="jot card content" style="text-align:left;">' +
+        var dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+        jotZone.innerHTML += '<div id="jot" class="jot card content" style="text-align:left;">' + '<span class="center"><h2 class="dateSans">' + date.toLocaleDateString('en-US', dateOptions) + '</h2><center><button class="editButton" onclick="editJot(jot)">Edit</button> <button class="downloadButton" onclick="download(jot)">Download</button> <button class="deleteButton" onclick="deleteJot(jot)">Delete</button></center></span>' +
             jot + '</div>';
     }
 
     if (localStorage.length === 0) {
-        document.getElementById('deleteAllButton').style.display = "none";
+        document.getElementById('newJotButton').style.display = "none";
     }
     if (localStorage.length > 0) {
         document.getElementById('noJotsZone').style.display = "none";
