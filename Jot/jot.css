@@ -212,8 +212,6 @@ blockquote {
   --color: #1d1d1f;
   color: var(--color);
   background: none;
-  -webkit-transition: 0.25s linear background, 0.25s linear color;
-  transition: 0.25s linear background, 0.25s linear color;
   text-decoration: none;
   border: 1px solid var(--color);
   border-radius: 20px;
@@ -230,7 +228,7 @@ blockquote {
 
 .downloadButton:hover {
   color: white !important;
-  background: black;
+  background: black !important;
 }
 
 .editButton {
@@ -239,8 +237,6 @@ blockquote {
   --color: #1d1d1f;
   color: var(--color);
   background: none;
-  -webkit-transition: 0.25s linear background, 0.25s linear color;
-  transition: 0.25s linear background, 0.25s linear color;
   text-decoration: none;
   border: 1px solid var(--color);
   border-radius: 20px;
@@ -257,7 +253,7 @@ blockquote {
 
 .editButton:hover {
   color: white !important;
-  background: black;
+  background: black !important;
 }
 
 .centerButton {
@@ -481,8 +477,6 @@ blockquote {
   --color: #1d1d1f;
   color: var(--color);
   background: none;
-  -webkit-transition: 0.25s linear background, 0.25s linear color;
-  transition: 0.25s linear background, 0.25s linear color;
   text-decoration: none;
   border: 1px solid var(--color);
   border-radius: 20px;
@@ -499,7 +493,7 @@ blockquote {
 
 .deleteButton:hover {
   color: white !important;
-  background: black;
+  background: black !important;
 }
 
 .slider {
