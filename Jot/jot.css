@@ -201,12 +201,12 @@ blockquote {
   text-align: center;
 }
 
-.saeveButton:hover {
+.saveButton:hover {
   color: white !important;
   opacity: 0.8;
 }
 
-.downloadButton {
+.editButton, .downloadButton, .deleteButton {
   --hover-background: black;
   --hover-color: white;
   --color: #1d1d1f;
@@ -226,32 +226,7 @@ blockquote {
   text-align: center
 }
 
-.downloadButton:hover {
-  color: white !important;
-  background: black !important;
-}
-
-.editButton {
-  --hover-background: black;
-  --hover-color: white;
-  --color: #1d1d1f;
-  color: var(--color);
-  background: none;
-  text-decoration: none;
-  border: 1px solid var(--color);
-  border-radius: 20px;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 5px;
-  padding: 7px 28px;
-  font-size: 16px;
-  font-family: sans-serif;
-  cursor: pointer;
-  text-align: center
-}
-
-.editButton:hover {
+.editButton:hover, .downloadButton:hover, .deleteButton:hover  {
   color: white !important;
   background: black !important;
 }
@@ -361,7 +336,7 @@ blockquote {
   font-size: 16px;
 }
 
-#savedSnackbar {
+#savedSnackbar, #wordCountSnackbar {
   visibility: hidden;
   min-width: 100px;
   margin-left: -125px;
@@ -378,30 +353,7 @@ blockquote {
   font-size: 16px;
 }
 
-#savedSnackbar.show {
-  visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-
-#wordCountSnackbar {
-  visibility: hidden;
-  min-width: 100px;
-  margin-left: -125px;
-  font-family: sans-serif;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  border-radius: 2px;
-  padding: 16px;
-  position: fixed;
-  z-index: 1;
-  left: 50%;
-  bottom: 30px;
-  font-size: 16px;
-}
-
-#wordCountSnackbar.show {
+#savedSnackbar.show, #wordCountSnackbar.show {
   visibility: visible;
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
@@ -469,31 +421,6 @@ blockquote {
 .newJotButton:hover {
   color: white !important;
   opacity: 0.8;
-}
-
-.deleteButton {
-  --hover-background: black;
-  --hover-color: white;
-  --color: #1d1d1f;
-  color: var(--color);
-  background: none;
-  text-decoration: none;
-  border: 1px solid var(--color);
-  border-radius: 20px;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 5px;
-  padding: 7px 28px;
-  font-size: 16px;
-  font-family: sans-serif;
-  cursor: pointer;
-  text-align: center;
-}
-
-.deleteButton:hover {
-  color: white !important;
-  background: black !important;
 }
 
 .slider {
