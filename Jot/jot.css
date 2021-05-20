@@ -157,6 +157,12 @@ blockquote {
   overflow-y: hidden;
   text-align: center;
   display: inline-block;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+ .btn-group::-webkit-scrollbar {
+  display: none;
 }
 
 .btn-group button {
@@ -459,4 +465,10 @@ blockquote {
   font-family: sans-serif !important;
   margin-bottom: -5px;
   margin-top: 10px;
+}
+
+.wordCountButton {
+  border-radius: 20px !important;
+  height: 40px !important;
+  width: 45px !important;
 }
