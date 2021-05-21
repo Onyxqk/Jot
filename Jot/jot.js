@@ -1,8 +1,8 @@
 window.onload = function () {
   url = window.location.href;
   if(url.indexOf("?") > -1) {
-    selectedJot = Date.parse((url.split('?')[1]));
-    document.getElementById("content").innerHTML = localStorage.getItem(localStorage.key(selectedJot));
+    var selectedJot = url.split('?')[1];
+    document.getElementById("content").innerHTML = localStorage.getItem(selectedJot);
   }
 };
 
@@ -56,7 +56,7 @@ function textAlign() {
 function download(jot) {
   var content = jot.innerHTML;
   var dl = document.createElement('a');
-  var filename = jot.getElementsByTagName("H1").item(0).innerHTML + '.html';
+  var filename = prompt("What is the name of your Jot?") + ".html";
   dl.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(content));
   dl.setAttribute('download', filename);
   // Set hidden so the element doesn't disrupt your page
@@ -69,7 +69,7 @@ function download(jot) {
 }
 
 function save() {
-  var date = Date.now();
+  var date = Date.now().toString();
   var content = document.getElementById("content").innerHTML;
   localStorage.setItem(date, content);
   var savedSnackbar = document.getElementById("savedSnackbar");

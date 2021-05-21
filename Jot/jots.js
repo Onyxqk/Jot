@@ -1,12 +1,15 @@
 window.onload = function () {
     updateJots();
-    if (navigator.storage && navigator.storage.persist)
+    if (navigator.storage && navigator.storage.persist) {
         navigator.storage.persist().then(function (persistent) {
-            if (persistent)
+            if (persistent) {
                 console.log("Storage will not be cleared except by explicit user action");
-            else
+            }
+            else {
                 console.log("Storage may be cleared by the UA under storage pressure.");
+            }
         });
+    }
 };
 
 function updateJots() {
@@ -16,7 +19,7 @@ function updateJots() {
         var date = new Date(timestamp);
         var jot = localStorage.getItem(localStorage.key(i));
         var dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-        jotZone.innerHTML += '<div id="jot" class="jot card content" style="text-align:left;">' + '<span class="center"><h2 class="dateSans">' + date.toLocaleDateString('en-US', dateOptions) + '</h2><center><button class="editButton" onclick="editJot(jot)">Edit</button> <button class="downloadButton" onclick="download(jot)">Download</button> <button class="deleteButton" onclick="deleteJot(jot)">Delete</button></center></span>' +
+        jotZone.innerHTML += '<div id="jot" class="jot card content" style="text-align:left;">' + '<span class="center"><h2 class="dateSans">' + date.toLocaleDateString('en-US', dateOptions) + '</h2><center><button class="editButton" id='+i+' onclick="editJot(this.id)">Edit</button> <button class="downloadButton" id='+i+' onclick="download(jot)">Download</button> <button class="deleteButton" id='+i+' onclick="deleteJot(this.id)">Delete</button></center></span>' +
             jot + '</div>';
     }
 
@@ -68,15 +71,19 @@ function deleteAll() {
     location.reload();
 }
 
-function deleteJot(jot) {
-    localStorage.removeItem(localStorage.key(jot));
-    location.reload();
-}
-
 function loadJot() {
     location.assign("Jot.html");
 }
 
-function editJot(jot) {
-    location.assign("Jot.html"+"?"+localStorage.key(jot));
-  }
+function editJot(id) {
+    console.log(id);
+    var jot = localStorage.getItem(localStorage.key(id));
+    console.log(jot);
+    location.assign("Jot.html"+"?"+localStorage.key(id));
+}
+
+function deleteJot(id) {
+    console.log(id);
+    localStorage.removeItem(localStorage.key(id));
+    location.reload();
+}
