@@ -149,9 +149,8 @@ blockquote {
   width: max-content;
   padding-left: 16px;
   padding-right: 16px;
-  margin-top: 8px;
-  height: 61.5px;
-  margin-bottom: 5px;
+  margin-top: 4px;
+  height: 59px;
   border-radius: 10px;
   overflow-x: scroll;
   overflow-y: hidden;
