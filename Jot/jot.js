@@ -70,6 +70,11 @@ function download(jot) {
 }
 
 function save() {
+  url = window.location.href;
+  if(url.indexOf("?") > -1) {
+    var existingJot = url.split('?')[1];
+    localStorage.removeItem(existingJot);
+  }
   var date = Date.now().toString();
   var content = document.getElementById("content").innerHTML;
   localStorage.setItem(date, content);

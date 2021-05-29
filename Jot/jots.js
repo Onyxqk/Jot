@@ -39,9 +39,9 @@ function updateJots() {
         }
     }
 
-    if (localStorage.length === 0) {
-        document.getElementById('newJotButton').style.display = "none";
-    }
+    // if (localStorage.length === 0) {
+    //     document.getElementById('newJotButton').style.display = "none";
+    // }
     if (localStorage.length > 0) {
         document.getElementById('noJotsZone').style.display = "none";
     }
