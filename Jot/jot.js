@@ -53,22 +53,6 @@ function textAlign() {
   }
 }
 
-function download(jot) {
-  var content = jot.innerHTML,
-  dl = document.createElement('a'),
-  promptInput = prompt("What is the name of your Jot?"),
-  filename;
-  if(promptInput !== null) {
-    promptInput === "" ? filename = "Untitled" + ".html" : filename = promptInput + ".html";
-    dl.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(content));
-    dl.setAttribute('download', filename);
-    dl.setAttribute('visibility', 'hidden');
-    dl.setAttribute('display', 'none');
-    document.body.appendChild(dl);
-    dl.click();
-  }
-}
-
 function save() {
   url = window.location.href;
   if(url.indexOf("?") > -1) {
@@ -108,10 +92,6 @@ function keyHandler(e) {
   if (e.ctrlKey && e.key === "s" || e.metaKey && e.key === "s") {
     e.preventDefault();
     save();
-  }
-  if (e.ctrlKey && e.key === "d" || e.metaKey && e.key === "d") {
-    e.preventDefault();
-    download();
   }
 
   if (e.ctrlKey && e.key === "/" || e.metaKey && e.key === "/") {

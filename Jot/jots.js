@@ -25,7 +25,7 @@ function updateJots() {
         dateOptions = { year: 'numeric', month: 'long', day: 'numeric' },
         dateComponent = '<h2 class="dateSans">' + date.toLocaleDateString('en-US', dateOptions) + '</h2>',
         editButtonComponent = '<button class="editButton" id='+i+' onclick="editJot(this.id)">Edit</button> ',
-        downloadButtonComponent = '<button class="downloadButton" id='+i+' onclick="download(jot)">Download</button> ',
+        downloadButtonComponent = '<button class="downloadButton" id='+i+' onclick="downloadJot(this.id)">Download</button> ',
         deleteButtonComponent = '<button class="deleteButton" id='+i+' onclick="deleteJot(this.id)">Delete</button> ',
         readMoreButtonComponent = '<br><br><button id='+i+' class="readMoreButton" onclick="toggleExpand(this.id)">Read More</button>';
         if(jot.length <= 280) {
@@ -98,6 +98,22 @@ function editJot(id) {
     location.assign("Jot.html"+"?"+localStorage.key(id));
 }
 
+function downloadJot(id) {
+    var jot = localStorage.getItem(localStorage.key(id)),
+    dl = document.createElement('a'),
+    promptInput = prompt("What is the name of your Jot?"),
+    filename;
+    if(promptInput !== null) {
+      promptInput === "" ? filename = "Untitled" + ".html" : filename = promptInput + ".html";
+      dl.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(jot));
+      dl.setAttribute('download', filename);
+      dl.setAttribute('visibility', 'hidden');
+      dl.setAttribute('display', 'none');
+      document.body.appendChild(dl);
+      dl.click();
+    }
+  }
+
 function deleteJot(id) {
     console.log(id);
     localStorage.removeItem(localStorage.key(id));
@@ -116,7 +132,7 @@ function readMore(jot, readMoreExpand) {
 
 function toggleExpand(i) {
     var editButtonComponent = '<button class="editButton" id='+i+' onclick="editJot(this.id)">Edit</button> ',
-    downloadButtonComponent = '<button class="downloadButton" id='+i+' onclick="download(jot)">Download</button> ',
+    downloadButtonComponent = '<button class="downloadButton" id='+i+' onclick="downloadJot(this.id)">Download</button> ',
     deleteButtonComponent = '<button class="deleteButton" id='+i+' onclick="deleteJot(this.id)">Delete</button> ',
     readMoreButtonComponent = '<br><br><button id='+i+' class="readMoreButton" onclick="toggleExpand(this.id)">Read More</button>',
     readLessButtonComponent = '<button id='+i+' class="readMoreButton" onclick="toggleExpand(this.id)">Read Less</button>',
