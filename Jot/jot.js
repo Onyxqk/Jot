@@ -54,18 +54,19 @@ function textAlign() {
 }
 
 function download(jot) {
-  var content = jot.innerHTML;
-  var dl = document.createElement('a');
-  var filename = prompt("What is the name of your Jot?") + ".html";
-  dl.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(content));
-  dl.setAttribute('download', filename);
-  // Set hidden so the element doesn't disrupt your page
-  dl.setAttribute('visibility', 'hidden');
-  dl.setAttribute('display', 'none');
-  // Append to page
-  document.body.appendChild(dl);
-  // Now you can trigger the click
-  dl.click();
+  var content = jot.innerHTML,
+  dl = document.createElement('a'),
+  promptInput = prompt("What is the name of your Jot?"),
+  filename;
+  if(promptInput !== null) {
+    promptInput === "" ? filename = "Untitled" + ".html" : filename = promptInput + ".html";
+    dl.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(content));
+    dl.setAttribute('download', filename);
+    dl.setAttribute('visibility', 'hidden');
+    dl.setAttribute('display', 'none');
+    document.body.appendChild(dl);
+    dl.click();
+  }
 }
 
 function save() {

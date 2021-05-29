@@ -211,7 +211,7 @@ blockquote {
   opacity: 0.8;
 }
 
-.editButton, .downloadButton, .deleteButton {
+.editButton, .downloadButton, .deleteButton, .readMoreButton {
   --hover-background: black;
   --hover-color: white;
   --color: #1d1d1f;
@@ -231,7 +231,7 @@ blockquote {
   text-align: center
 }
 
-.editButton:hover, .downloadButton:hover, .deleteButton:hover  {
+.editButton:hover, .downloadButton:hover, .deleteButton:hover, .readMoreButton:hover {
   color: white !important;
   background: black !important;
 }

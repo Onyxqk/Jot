@@ -1,4 +1,7 @@
+var readMoreExpand;
+
 window.onload = function () {
+    readMoreExpand = false;
     updateJots();
     if (navigator.storage && navigator.storage.persist) {
         navigator.storage.persist().then(function (persistent) {
@@ -13,14 +16,27 @@ window.onload = function () {
 };
 
 function updateJots() {
-    var jotZone = document.getElementById('jotZone');
-    for (var i = 0; i < localStorage.length; i++) {
-        var timestamp = parseInt(localStorage.key(i));
-        var date = new Date(timestamp);
-        var jot = localStorage.getItem(localStorage.key(i));
-        var dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-        jotZone.innerHTML += '<div id="jot" class="jot card content" style="text-align:left;">' + '<span class="center"><h2 class="dateSans">' + date.toLocaleDateString('en-US', dateOptions) + '</h2><center><button class="editButton" id='+i+' onclick="editJot(this.id)">Edit</button> <button class="downloadButton" id='+i+' onclick="download(jot)">Download</button> <button class="deleteButton" id='+i+' onclick="deleteJot(this.id)">Delete</button></center></span>' +
-            jot + '</div>';
+    var jotZone, i;
+    jotZone = document.getElementById('jotZone')
+    for (i = 0; i < localStorage.length; i++) {
+        var timestamp = parseInt(localStorage.key(i)),
+        date = new Date(timestamp),
+        jot = localStorage.getItem(localStorage.key(i)),
+        dateOptions = { year: 'numeric', month: 'long', day: 'numeric' },
+        dateComponent = '<h2 class="dateSans">' + date.toLocaleDateString('en-US', dateOptions) + '</h2>',
+        editButtonComponent = '<button class="editButton" id='+i+' onclick="editJot(this.id)">Edit</button> ',
+        downloadButtonComponent = '<button class="downloadButton" id='+i+' onclick="download(jot)">Download</button> ',
+        deleteButtonComponent = '<button class="deleteButton" id='+i+' onclick="deleteJot(this.id)">Delete</button> ',
+        readMoreButtonComponent = '<br><br><button id='+i+' class="readMoreButton" onclick="toggleExpand(this.id)">Read More</button>';
+        if(jot.length <= 280) {
+            jotZone.innerHTML += '<div id="jot" class="jot card content" style="text-align:left;">' + '<span class="center">' + dateComponent + '<center>' 
+            + editButtonComponent + downloadButtonComponent + deleteButtonComponent + '</center></span>' + jot + '</div>';
+        }
+        if(jot.length > 280) {
+            jotZone.innerHTML += '<div id="jot" class="jot card content" style="text-align:left;">' + '<span class="center">' + dateComponent + '<center>' 
+            + editButtonComponent + downloadButtonComponent + deleteButtonComponent + '</center></span>' + readMore(jot, readMoreExpand) 
+            + readMoreButtonComponent + '</div>';
+        }
     }
 
     if (localStorage.length === 0) {
@@ -40,7 +56,7 @@ function search() {
     editButtons = document.getElementsByClassName("editButton")
     deleteButtons = document.getElementsByClassName("deleteButton");
     downloadButtons = document.getElementsByClassName("downloadButton");
-    // Loop through all Jots, and hide those who don't match the search query
+
     for (i = 0; i < jots.length; i++) {
         jot = jots[i];
         date = dates[i];
@@ -86,4 +102,39 @@ function deleteJot(id) {
     console.log(id);
     localStorage.removeItem(localStorage.key(id));
     location.reload();
+}
+
+function readMore(jot, readMoreExpand) {
+    if(!readMoreExpand) {
+        jotPreview = jot.slice(0,280);
+        return jotPreview;
+    }
+    else {
+        return jot;
+    }
+}
+
+function toggleExpand(i) {
+    var editButtonComponent = '<button class="editButton" id='+i+' onclick="editJot(this.id)">Edit</button> ',
+    downloadButtonComponent = '<button class="downloadButton" id='+i+' onclick="download(jot)">Download</button> ',
+    deleteButtonComponent = '<button class="deleteButton" id='+i+' onclick="deleteJot(this.id)">Delete</button> ',
+    readMoreButtonComponent = '<br><br><button id='+i+' class="readMoreButton" onclick="toggleExpand(this.id)">Read More</button>',
+    readLessButtonComponent = '<button id='+i+' class="readMoreButton" onclick="toggleExpand(this.id)">Read Less</button>',
+    timestamp = parseInt(localStorage.key(i)),
+    date = new Date(timestamp),
+    dateOptions = { year: 'numeric', month: 'long', day: 'numeric' },
+    dateComponent = '<h2 class="dateSans">' + date.toLocaleDateString('en-US', dateOptions) + '</h2>',
+    jot = localStorage.getItem(localStorage.key(i)),
+    jots = document.getElementsByClassName("card");
+
+    readMoreExpand = !readMoreExpand;
+
+    if(readMoreExpand) {
+        jots[i].innerHTML = '<center>' + dateComponent + editButtonComponent + downloadButtonComponent + deleteButtonComponent + '</center>' +
+        readMore(jot, readMoreExpand) + readLessButtonComponent + '</div>';
+    }
+    if(!readMoreExpand) {
+        jots[i].innerHTML = '<center>' + dateComponent + editButtonComponent + downloadButtonComponent + deleteButtonComponent + '</center>' +
+        readMore(jot, readMoreExpand) + readMoreButtonComponent + '</div>';
+    }
 }
