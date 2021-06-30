@@ -10,28 +10,28 @@ body, html {
 
 h1 {
   font-family: "Georgia";
-  font-size: 300%
+  font-size: 48px;
 }
 
 h2 {
   font-family: "Georgia";
-  font-size: xx-large;
+  font-size: 32px;
 }
 
 p {
   font-family: "Georgia";
-  font-size: large;
+  font-size: 18px;
   line-height: 1.5;
 }
 
 ul {
   font-family: "Georgia";
-  font-size: large;
+  font-size: 18px;
 }
 
 ol {
   font-family: "Georgia";
-  font-size: large;
+  font-size: 18px;
 }
 
 a {
@@ -41,8 +41,9 @@ a {
 
 blockquote {
   padding: 1% 5% 1% 5%;
-  font-family: Menlo, Consolas, Monaco, Courier, monospace;
+  font-family: Menlo, Consolas, Monaco, Courier, monospace !important;
   background: rgb(245, 246, 247);
+  font-size: 16px;
 }
 
 .content {
